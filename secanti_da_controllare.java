@@ -43,7 +43,7 @@ public class Secanti{
 			
 			zero = m;
 		}
-		return zero	
+		return zero;	
 			
 	}
 }
