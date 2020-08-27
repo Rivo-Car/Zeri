@@ -1,7 +1,7 @@
 package Metodi;
 
 
-public class bisezione{
+public class Bisezione{
 	
 	
 	/**
