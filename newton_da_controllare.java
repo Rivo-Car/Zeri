@@ -28,8 +28,7 @@ public class Newton{
 			fx = Fun.Evaluate(x);
 			d_fx = Fun.EvaluateDerivata(x);	
 			
-			if (Math.abs(d_fx) == 0){
-				zero = x;
+			if (Math.abs(d_fx) == 0){ //ho dubbi su questo pezzo e se si può effettivamente usare il break qua 
 				break; 
 			}
 			
