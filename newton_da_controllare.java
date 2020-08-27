@@ -29,7 +29,7 @@ public class Newton{
 			d_fx = Fun.EvaluateDerivata(x);	
 			
 			if (Math.abs(d_fx) == 0){ //ho dubbi su questo pezzo e se si può effettivamente usare il break qua 
-				System.err.println("Attenzione! Poichè non è possibile dividere per zero, l'iterazioe successiva non può essere calcolata.");
+				System.err.println("Attenzione! Poichè non è possibile dividere per zero, l'iterazione successiva non può essere calcolata.");
 				break; 
 			}
 			
