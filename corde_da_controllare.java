@@ -27,7 +27,7 @@ public class Corde{
 		x = x0; //imposta il valore x0 come punto corrente.
 		
 		if (Math.abs(m) == 0){
-			zero = m;
+			System.err.println("Attenzione! Poichè non è possibile dividere per zero, l'iterazione successiva non può essere calcolata.");
 			break;
 		}
 		
