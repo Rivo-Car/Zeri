@@ -10,8 +10,9 @@ public class Newton {
 	 *  input: Funzione e sua derivata, nodo x0 reale, molteplicita dello zero, num max di iterazioni, tolleranza
 	 * output: punto dello zero
 	 * */ 
-	public static double Newton(Function Fun, double x0, int mult, int iter, double error ) {
+	public static double Newton(String fun, String dfun, double x0, int mult, int iter, double error ) {
 		
+		Function Fun = new Function(fun, dfun);
 		int i = 0;
 		while (Math.abs(Fun.Evaluate(x0)) >= error && i <= iter ) {		  
 		  double  f = Fun.Evaluate(x0);
@@ -25,10 +26,10 @@ public class Newton {
 	}
 	public static void main(String[] args) {
 		
-		Function f = new Function("log(x)","1/x");
-		double res = Newton(f, 0.5, 1, 20, 0.0000000000001);
+
+		double res = Newton("log(x)","1/x", 0.5, 1, 20, 0.0000000000001);
 		System.out.println(res);
-		System.out.println(f.Evaluate(res));
+		
 	}
 
 }
