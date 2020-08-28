@@ -107,19 +107,4 @@ public class Function {
 			    return Double.NaN;
 		 }
 	}
-	
-	public static void main(String[] args) 
-	{		
-			Function f = new Function("2/x", "0");
-			double res = f.Evaluate(0);
-			
-			if(Double.isFinite(res)) {           //controllo se risultato sia finito
-				System.out.println(res);
-				System.out.println(f.EvaluateDerivata(6));
-				}
-			
-			else {
-				System.out.println("Il prog non e' andato a buon fine, ci dispiace");
-				}			
-    }
 }
