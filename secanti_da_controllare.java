@@ -19,7 +19,8 @@ public class Secanti{
 	public static double Secanti(Function Fun, double x0, double x1, double toll_err, int numero_max_iter) {
 		
 		
-		double fx0, fx1, m, x2, zero;  
+		double fx0, fx1, m, x2;
+		double zero = 0;
 		int n = 0;  //contatore del numero di iterazioni.
 		double error = 1;  //valore iniziale dell'errore.
 		
@@ -38,10 +39,10 @@ public class Secanti{
 			x2 = x1-(fx1/m);
 			x0 = x1;
 			x1 = x2;
-			error = Math.abs(x1-x0);
+			error = Math.abs(x1-x0); //non serve tanto
 			n++;
 			
-			zero = m;
+			zero = x1;
 		}
 		return zero;	
 			
