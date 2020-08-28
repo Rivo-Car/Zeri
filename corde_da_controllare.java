@@ -28,10 +28,7 @@ public class Corde{
 		
 		x = x0; //imposta il valore x0 come punto corrente.
 		
-		if (Math.abs(m) == 0){
-			System.err.println("Attenzione! Poichè non è possibile dividere per zero, l'iterazione successiva non può essere calcolata.");
-			break;
-		}
+		
 		
 		while ((n <= numero_max_iter) && (error >= toll_err)){
 			fx = Fun.Evaluate(x);
@@ -40,6 +37,11 @@ public class Corde{
 			x = x1;
 			n++;
 			zero = x;
+			
+			if (Math.abs(m) == 0){
+			System.err.println("Attenzione! Poichè non è possibile dividere per zero, l'iterazione successiva non può essere calcolata.");
+			break;
+		}
 		}
 		
 		return zero;	
