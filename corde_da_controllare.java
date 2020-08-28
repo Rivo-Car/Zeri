@@ -16,10 +16,12 @@ public class Corde{
 	*/
 	
 	
-	public static double Corde(Function Fun, double x0, double toll_err, int numero_max_iter) {
+	public static double Corde(String fun, String dfun, double x0, double toll_err, int numero_max_iter) {
 		
-		
-		double x, x1, zero, fx;  //x è il punto corrente.
+		Function Fun = new Function(fun, dfun);
+		double x;  //x è il punto corrente.
+		double x1, fx; 
+		double zero = 0;
 		double m = Fun.EvaluateDerivata(x0); //derivata della funzione calcolata nel punto iniziale.
 		int n = 0;  //contatore del numero di iterazioni.
 		double error = 1;  //valore iniziale dell'errore, che verrà poi aggiornato a ogni iterazione del ciclo.
@@ -34,7 +36,7 @@ public class Corde{
 		while ((n <= numero_max_iter) && (error >= toll_err)){
 			fx = Fun.Evaluate(x);
 			x1 = x-(fx/m);
-			error = Math.abs(x1-x);
+			error = fx; //errore dell'output
 			x = x1;
 			n++;
 			zero = x;
