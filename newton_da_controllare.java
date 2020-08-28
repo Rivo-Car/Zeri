@@ -18,7 +18,8 @@ public class Newton{
 	
 	public static double Newton(Function Fun, double x0, double toll_err, int numero_max_iter) {
 		
-		double x, x1 zero, fx, d_fx;  //x è il punto corrente.
+		double x, x1, fx, d_fx;  //x è il punto corrente.
+		double zero = 0;
 		int n = 0;  //contatore del numero di iterazioni.
 		double error = 1;  //valore iniziale dell'errore, che verrà poi aggiornato a ogni iterazione del ciclo.
 		
