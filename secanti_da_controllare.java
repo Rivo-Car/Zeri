@@ -42,8 +42,9 @@ public class Secanti{
 			error = Math.abs(x1-x0); //non serve tanto
 			n++;
 			
-			zero = x1;
 		}
+		
+		zero = x1;
 		return zero;	
 			
 	}
