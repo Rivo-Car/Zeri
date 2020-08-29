@@ -26,7 +26,7 @@ public class Secanti{
 		
 		x = x0; //imposta il valore x0 come punto corrente.
 		
-		while ((n <= numero_max_iter) && (error >= toll_err)){
+		while ((n < numero_max_iter) && (error >= toll_err)){
 			
 			fx1 = Fun.Evaluate(x1);
 			fx0 = Fun.Evaluate(x0);
