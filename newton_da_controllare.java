@@ -25,7 +25,7 @@ public class Newton{
 		
 		x = x0; //imposta il valore x0 come punto corrente.
 		
-		while ((n <= numero_max_iter) && (error >= toll_err)){
+		while ((n < numero_max_iter) && (error >= toll_err)){
 			fx = Fun.Evaluate(x);
 			d_fx = Fun.EvaluateDerivata(x);	
 			
