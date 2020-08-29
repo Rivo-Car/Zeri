@@ -16,9 +16,8 @@ public class Corde{
 	*/
 	
 	
-	public static double Corde(String fun, String dfun, double x0, double toll_err, int numero_max_iter) {
+	public static double Corde(Function Fun, double x0, double toll_err, int numero_max_iter) {
 		
-		Function Fun = new Function(fun, dfun);
 		double x;  //x è il punto corrente.
 		double x1, fx; 
 		double zero = 0;
