@@ -13,7 +13,7 @@ public class Newton {
 	public static double Newton(Function Fun, double x0, int mult, int iter, double error ) {
 		
 		int i = 0;
-		while (Math.abs(Fun.Evaluate(x0)) >= error && i <= iter ) {		  
+		while (Math.abs(Fun.Evaluate(x0)) >= error && i < iter ) {		  
 		  double  f = Fun.Evaluate(x0);
 		  double df = Fun.EvaluateDerivata(x0);			 
 		  double x = x0 - mult*(f/df);
