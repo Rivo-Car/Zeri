@@ -29,7 +29,7 @@ public class Corde{
 		
 		
 		
-		while ((n <= numero_max_iter) && (error >= toll_err)){
+		while ((n < numero_max_iter) && (error >= toll_err)){
 			fx = Fun.Evaluate(x);
 			x1 = x-(fx/m);
 			error = Math.abs(fx); //errore dell'output
