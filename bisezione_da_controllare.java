@@ -28,10 +28,10 @@ public class Bisezione{
 			
 			if (fa*fb >= 0){
 				System.err.println("Secondo il teorema di Bolzano, la funzione, nello specifico intervallo dato in input,"
-						+ " non possiede zeri. Si consiglia di inserire altri estremi dell'intervallo.");
+						+ " non possiede zeri oppure ne possiede alcuni. Si consiglia di inserire altri estremi dell'intervallo.");
 			}
 			else {
-				while ((Math.abs(b-a) >= toll_err) && (n < numero_max_iter)){  //2 condizioni di arresto del ciclo while
+				while ((Math.abs(fm) >= toll_err) && (n < numero_max_iter)){  //2 condizioni di arresto del ciclo while
 					n++;	
 					if (fm == 0){
 						zero = m;
