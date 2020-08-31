@@ -1,0 +1,108 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+
+ 
+
+\begin{document}
+\title{Relazione progetto di programmazione: calcolo degli zeri di una funzione }
+\author{Giulia Altobel, Nicole Corso, Alessio Gianello, Rivo  }
+
+
+\maketitle
+ \section {Introduzione}
+
+
+
+
+\section{Metodo di Bisezione}
+\subsection{Ipotesi di applicazione:}
+
+Per  poter applicare il metodo di Bisezione è necessario che le ipotesi del teorema seguente siano soddisfatte: 
+\\
+\\
+ \textit{Teorma di Bolzano:}
+Siano a e b due numeri reali tali che:
+
+\begin{enumerate}
+\item  f(a)f(b)<0;
+\item  f sia continua su [a,b]
+\end{enumerate}	
+
+allora esiste almeno un $\bar{x}$ $\in$  (a, b) tale che f($\bar{x}$)=0.
+\\
+\subsection{Procedimento:}
+Si procede dividendo l'intervallo in due parti uguali e calcolando il valore della funzione nel punto medio di ascissa m = (a+b)/2.
+Se risulta f(m) = f((a+b)/2) = 0 allora m è la radice cercata; altrimenti tra i due intervalli [a, m) e (m, b] si sceglie quello ai cui estremi la funzione  assume 	valori di segno opposto. Si ripete per questo  nuovo intervallo la procedura di dimezzamento.
+Così continuando si ottiene una successione di intervalli [a1, b1], [a2, b2], ..., [an, bn] incapsulati, cioè ognuno incluso nel precedente. Questi intervalli hanno come ampiezze
+\begin{equation} bn - an = (b-a) / 2^n  \end {equation}per n =1,2
+
+I valori $a_i$ sono valori approssimati per difetto della radice, i valori di $b_i$ sono invece i valori della radice approssimati per eccesso. 
+Gli $a_n$ formano una successione crescente limitata ed i $b_n$ formano una successione decrescente limitata.
+Le due successioni ammettono lo stesso limite che è la radice dell'equazione esaminata.
+
+\subsection{Criterio di arresto ed errore:}
+
+L'algoritmo viene arrestato quando f(m) è abbastanza vicino a 0 e/o si raggiunge il numero massimo di iterazioni consentite .
+Dunque come stima della soluzione (alphasimbolo)  alla fine avremo un certo m. 
+
+\subsection {Analisi:}
+\subsubsection{Vantaggi:}
+\begin{enumerate}
+\item Vale la seuente relazione:
+%\begin{equation}	lim (n->(freccietta per dire che il limite tende a + infinito)+inf) |e_n| = 0 \end{equation}
+quindi la convergenza del metodo è globale (converge sempre); è quindi un metodo molto robusto.
+\item  Ha il notevole pregio di essere stabile in ogni occasione e quindi di garantire sempre la buona riuscita dell'operazione.
+\item Dal p.d.v. del costo computazionale, poichè ad ogni iterazione si esegue una sola valutazione di funzione, il costo computazionale risulta essere basso. 
+
+\end{enumerate}
+
+\subsubsection{Svantaggi:}
+\begin {enumerate}
+\item L'efficienza del metodo di bisezione è scarsa e sono richieste ipotesi particolarmente restrittive;
+\item Se richiediamo \begin {equation}|e_n| <= tolleranza  \end {equation}otteniamo la seguente condizione per n:
+\begin{equation}	n >= log_2 ((b-a) / tollerr) - 1. \end{equation}
+Essendo  %log_2 10 =3.32
+ (uguale con le tilde) servono in media più di tre bisezioni per migliorare di una cifra significativa l'accuratezza della radice, quindi la convergenza è  lenta;
+\item Inoltre la riduzione dell'errore a ogni passaggio non è monotona, cioè non è detto che:  \begin {equation}|e_n+1| < |e_n | \end{equation}per ogni n = 1,2\dots
+\item Il metodo funziona solo se la funzione ammette un solo zero e non può calcolare zeri complessi.
+\end{enumerate}
+\section {Metodo di Newton o delle tangenti}
+\subsection{Ipotesi:}
+Il metodo delle tangenti, chiamato anche metodo di Newton o metodo di Newton-Raphson, è uno dei metodi per il calcolo approssimato di una soluzione di 		un'equazione della forma f(x)=0.
+\\
+\\
+\textit{Teorema degli zeri:}
+La condizione necessaria affinché il metodo sia applicabile è che esista un intervallo [a,b] in cui x0 nell'intervallo è tale che f'(x0) (diverso) 0 e f''(x0) (diverso) 0 		
+\subsection{Procedimento:}
+Il metodo consiste nel sostituire alla curva y=f(x) la tangente alla curva stessa, partendo da un qualsiasi punto: considerando l’equazione del fascio di rette:
+\begin{equation} y-f(x0)=m(x-x0)\end{equation} posto y=0 e m=f'(x0), x1 sarà:\begin{equation} x1=x0-(f(x0)/f'(x0)) \end{equation}.
+Generalizzando all’iterazione k: $x_k-1$ =$x_k$ - (f($x_k$))/f'($x_k$))), che è la relazione di ricorrenza del metodo (che permette di determinare successive 	approssimazioni della radice dell'equazione y=f(x)=0).
+\subsection{Criterio di arresto ed errore:}
+L'algoritmo viene arrestato quando viene raggiunto il massimo numero di iterazioni e/o quando l'errore risulta minore della tolleranza prestabilita.
+L'errore è dato dalla seguente relazione:
+\begin{equation} e_n=|x_1-x| \end{equation}
+Dove con x si intende l'itererazione precedente e con $x_1$ si intende l'iterazione corrente.
+\subsection{Analisi:}
+\subsubsection{Vantaggi:}
+Con le ipotesi poste, si dimostra che la successione delle $x_n$ converge alla radice piuttosto rapidamente.
+La convergenza è quadratica, cioè il numero di cifre significative approssimativamente raddoppia ad ogni iterazione.
+\subsubsection{Svantaggi:}
+\begin{enumerate}
+\item Il metodo è applicabile solo a funzioni derivabili con derivata prima diversa da zero nei punti della successione;
+\\
+\item La convergenza non è garantita, in particolare quando f'(x) varia notevolmente in prossimità dello zero. 
+Inoltre, il metodo assume che f'(x) sia disponibile direttamente per un dato x. Nei casi in cui questo non si verifichi e risultasse necessario calcolare la derivata attraverso una differenza finita, è consigliabile usare il metodo delle secanti;
+\\
+\item Il numero di iterazioni dipende principalmente dalla posizione del punto iniziale rispetto allo zero. 
+In base alla funzione analizzata e al valore di x0 assunto come prima iterazione il metodo può convergere o meno. Il metodo risulta meno solido rispetto al metodo di bisezione.
+\end{enumerate}
+\subsubsection{Confronto con Bisezione:}
+\begin{enumerate}
+\item Si può subito notare la velocità di convergenza del metodo rispetto al metodo precedente: col metodo di bisezione cresce linearmente, anche se solo localmente (cioè non vale per ogni intervallo).
+\item Il metodo esegue un numero di iterazioni significativamente inferiore. 
+\item  Come costo computazionale, ad ogni iterazione esegue due valutazioni di funzione. È quindi più pesante rispetto al precedente metodo. 
+
+\end{enumerate}
+
+\end {document}
