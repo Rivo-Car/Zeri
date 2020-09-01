@@ -161,19 +161,40 @@ IL PROBLEMA DEL CALCOLO DEGLI ZERI DI UNA FUNZIONE
 
 
 	//da wikipedia pag.principale metodo delle corde 
-
-	Il metodo delle corde (o metodo delle secanti con estremo fisso) è uno dei metodi più semplici per il calcolo approssimato di una soluzione di un'equazione 		della forma f(x)=0.
+	
+	
+	*** IPOTESI *** :
+	
+	Il metodo delle corde (o metodo delle secanti con estremo fisso) è uno dei metodi più semplici per il calcolo approssimato di una soluzione di un'equazione 			della forma f(x)=0.
  	Esso si applica dopo avere determinato un intervallo [a,b] che contiene una sola radice.
+	
+	*** PROCEDIMENTO ***:
 
-	Il metodo consiste nel costruire una successione di punti con il seguente criterio: assegnato un punto iniziale x_{0}, per ogni n >= 0, il punto x_{n+1} sia lo 	zero della retta passante per il punto (x_{n},f(x_{n}) e di coefficiente angolare m = (f(a)-f(x_{n}) / (a-x_{n})
-	ovvero quello della retta passante per i punti (x_{n},f(x_{n})) e (a,f(a)).
+	Il metodo consiste nel costruire una successione di punti con il seguente criterio:
+	
+	assegnato un punto iniziale x_0, per ogni n >= 0, il punto x_n+1 sia lo zero della retta passante per il punto (x_n, f(x_n) e di coefficiente angolare m = (f(a)-f(x_n) / (a-x_n)
+	ovvero quello della retta passante per i punti (x_n,f(x_n)) e (a,f(a)).
 
 	Iterando il procedimento del calcolo dell'intersezione delle varie rette con l'asse delle ascisse, si ottiene la relazione di ricorrenza:
 
-	x_{n+1}=a-f(a)*(x_n - a) / (f_(xn)-f_(a)).
+	x_n+1} = a - f(a)*(x_n - a) / (f(x_n) - f(a)).
+	
+	
+	*** CRITERIO DI ARRESTO ED ERRORE *** :
+	
+	Solito discorso tolleranza e iterazioni sicuramente, vai a controllare. --> |x_k| < precisione/tolleranza scelta
+	
+	
+	*** ANALISI *** :
+	
+	
+	** VANTAGGI: 
+	
+	
+	
+	** SVANTAGGI :
 
-
-	Il metodo delle corde converge linearmente se, detta "alpha"  la soluzione corretta, vale
+	Il metodo delle corde converge linearmente se, detta "alpha"  la soluzione corretta, vale: 
 
 		0 < f'(alpha)/ m < 2
 
