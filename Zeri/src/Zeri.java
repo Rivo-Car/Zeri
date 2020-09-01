@@ -11,7 +11,7 @@ public class Zeri {
 	private static String metodo;
 
 	public static Function Fun;
-	public static int numero_max_iter, grado, mult;
+	public static int numero_max_iter, mult;
 	public static double a,b,toll_err;
 	//le chiamo così perchè  a seconda del caso saranno estremo destro e sinistro, o primo e secondo punto di applicazione dei metodi
 
@@ -229,7 +229,7 @@ public class Zeri {
 	
 	public static boolean ripassafunzione() {
 		
-		System.out.println("Se vuoi passare un altra funzione, scrivi Yes o yes, altrimenti scrivi qualcos'altro");
+		System.out.println("Se vuoi passare un altra funzione, scrivi Yes o yes, altrimenti scrivi qualcos'altro o premi Enter");
 		
 		String risposta = tastiera3.nextLine();
 		 

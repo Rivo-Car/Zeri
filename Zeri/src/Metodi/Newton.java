@@ -30,8 +30,8 @@ public class Newton {
 		
 		Function Fun = new Function("sin(x)-x","cos(x) - 1");
 		double res1 = 0,res2 = 0;
-		long m = System.currentTimeMillis();
-	    /*for(int i = 0; i<=1999;i++) {
+		/*long m = System.currentTimeMillis();
+	    for(int i = 0; i<=1999;i++) {
 		
 		 res1 = Newton(Fun, 0, 1, 20, 0.0000000000001);
 		}
