@@ -89,7 +89,7 @@ public class principalebeta{
 			  catch (Exception e){System.err.println("ERRORE: "+ e.getMessage());}
 		}
 			 
-		    while(Zeri.ripassafunzione()); 
+		    while(ripassafunzione()); 
 	}
 
 			else if(metodo.equals("corde")||metodo.equals("Corde")||metodo.equals("CORDE")){     // metodo delle CORDE
@@ -108,7 +108,7 @@ public class principalebeta{
 				  }
 				}
 			
-		     while(Zeri.ripassafunzione());  
+		     while(ripassafunzione());  
 		   }
 		
 			else if(metodo.equals("newton")||metodo.equals("Newton")||metodo.equals("NEWTON")){
@@ -128,7 +128,7 @@ public class principalebeta{
 		        }
 		       }
 			 
-		    while(Zeri.ripassafunzione());  
+		    while(ripassafunzione());  
 			 
 			   } 
 
@@ -150,7 +150,7 @@ public class principalebeta{
 				}
 			 }
 			 
-			 while(Zeri.ripassafunzione()); 
+			 while(ripassafunzione()); 
 				}
 
 
