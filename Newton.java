@@ -17,7 +17,7 @@ public class Newton {
 		while (Math.abs(x-x0) >= error && i < iter ) {		  
 		  double  f = Fun.Evaluate(x0);
 		  double df = Fun.EvaluateDerivata(x0);			 
-		  double x = x0 - mult*(f/df);
+		  x = x0 - mult*(f/df);
 		  i++;	
 		  System.out.println(x - x0);
 		  x0 = x;
