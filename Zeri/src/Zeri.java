@@ -16,7 +16,7 @@ public class Zeri {
 	//le chiamo così perchè  a seconda del caso saranno estremo destro e sinistro, o primo e secondo punto di applicazione dei metodi
 
 	public static double zero = 0;
-	public static double resid;
+	public static boolean caso_errore = true;
 	
 	/**
 	* Metodo main
@@ -35,7 +35,6 @@ public class Zeri {
 		
 		metodo=tastiera.nextLine();
 		zero= Double.NaN;
-		resid= Double.NaN;
 
 		if(metodo.equals("bisezione")||metodo.equals("Bisezione")||metodo.equals("BISEZIONE")){
 			 do {
@@ -135,6 +134,7 @@ public class Zeri {
 	}
 	
 	public static void input1(){
+		tastiera.reset();
 	try{
 			System.out.println("Inserire la funzione di cui calcolare gli zeri: ");
 			fg=tastiera.nextLine();
@@ -146,6 +146,7 @@ public class Zeri {
 	}
 	
 	public static void inputf(){
+		tastiera.reset();
 	try{	
 		System.out.println("Inserire la funzione di cui calcolare gli zeri: ");
 		fg=tastiera.nextLine();
@@ -155,40 +156,76 @@ public class Zeri {
    }
 	
 	public static void input2(){
-		try{
+	
+		do 
+			try {
+				
 			System.out.println("inserire l'estremo sinistro \n in caso si usi il metodo delle secanti, inserire il primo punto di partenza ");
 			a=tastiera2.nextDouble();
+			
 			System.out.println("inserire l'estremo destro \n in caso si usi il metodo delle secanti, inserire il secondo punto di partenza ");
 			b=tastiera2.nextDouble();
-		}
-			catch(InputMismatchException e ){ System.err.println("valori di input non validi ");}
-		}
+			
+			caso_errore = false;
+			
+		    }
+			catch(InputMismatchException e ){ System.err.println("valori di input non validi "); tastiera2.next();}
+		
+        while (caso_errore != false);
+		
+		caso_errore = true;
+	}
 	
 	public static void input3(){
-		try {
+
+		do 
+			try {
 			System.out.println("inserire la tolleranza desiderata ");
 			toll_err=tastiera2.nextDouble();
+			
 			System.out.println("inserire il numero massimo di iterazioni ");
 			numero_max_iter=tastiera2.nextInt();
+			
+			caso_errore = false;
 			}
-			catch(InputMismatchException e ){ System.err.println("valori di input non validi ");}
+			catch(InputMismatchException e ){ System.err.println("valori di input non validi, riprovare: "); tastiera2.next();}
+		
+		while (caso_errore != false);
+		
+		caso_errore = true;
 	}
 	
 	public static void input4(){
-		try{
+		do
+	    	try{
+	    		
 			System.out.println("Inserire il nodo di partenza ");
 			a=tastiera2.nextDouble();
+			
+			caso_errore = false;
+			
+		  } catch(InputMismatchException e ){ System.err.println("valori di input non validi "); tastiera2.next(); }
+		
+		while (caso_errore != false);
 
-		} catch(InputMismatchException e ){ System.err.println("valori di input non validi ");}
-
+		caso_errore = true;
 	}
 	
 	public static void input5(){
-		try{
+		do
+	    	try{
+	    		
 			System.out.println("inserire la molteplicità degli zeri da trovare ");
 			mult=tastiera2.nextInt();
-		} catch(InputMismatchException e ){System.err.println("valore in input non valido ");}
-		}
+			
+			caso_errore = false;
+			
+		  } catch(InputMismatchException e ){System.err.println("valore in input non valido "); tastiera2.next(); }
+		
+		while (caso_errore != false);
+
+		caso_errore = true;
+	}
 	
 	public static boolean ripassafunzione() {
 		
