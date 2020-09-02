@@ -26,7 +26,7 @@ public static double Newton(Function Fun, double x0,int mult, double toll_err, i
 			n++;	
 			zero = x;
 		}
-		System.out.println(n);
+
 		return zero;
 		
 	}

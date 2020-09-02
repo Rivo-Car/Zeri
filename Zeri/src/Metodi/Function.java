@@ -31,10 +31,12 @@ public class Function {
 	   catch (UnknownFunctionOrVariableException e) {
 			
 			  System.out.println("Variabile deve essere x");
+			  throw e;
 		}
 	   catch (IllegalArgumentException e) {
 			
 			   System.out.println("Funzione scritta male: " + e.getMessage());
+			   throw e;
 		}	
 	   catch (EmptyStackException e){
 			
@@ -55,6 +57,7 @@ public class Function {
 	   catch (UnknownFunctionOrVariableException e) {
 				
 				System.out.println("Variabile deve essere x");
+				throw e;
 			}
 	   catch (IllegalArgumentException e) {
 				
@@ -112,8 +115,8 @@ public class Function {
 
 	public static void main(String[] args) 
 	{		
-			Function f = new Function("x", "0");
-			double res = f.Evaluate(0);
+			Function f = new Function("cos/x", "0");
+			/*double res = f.Evaluate(0);
 			
 			if(Double.isFinite(res)) {           //controllo se risultato sia finito
 				System.out.println(res);
@@ -122,7 +125,7 @@ public class Function {
 			
 			else {
 				System.out.println("Il prog non e' andato a buon fine, ci dispiace");
-				}			
+				}	*/		
     }
 
 }

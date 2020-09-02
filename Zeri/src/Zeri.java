@@ -79,10 +79,11 @@ public class Zeri {
 					input1();
 					input4();
 					input3();
+					input5();
 					
 		      try{
 				 
-		    	 zero=Newton2.Newton(Fun,a,1,toll_err,numero_max_iter);
+		    	 zero=Newton2.Newton(Fun,a,mult,toll_err,numero_max_iter);
 				 System.out.println("la funzione inserita vale zero per x = " + zero);
 			 }
 		      
@@ -127,9 +128,8 @@ public class Zeri {
 				System.out.println("\n Attenzione: il metodo selezionato non corrisponde a quelli disponibili, riprovare: ");
 				}
 
-
-
-		}
+    }
+	
 	tastiera.close();
 	tastiera2.close();
 	tastiera3.close();
