@@ -236,6 +236,47 @@ IL PROBLEMA DEL CALCOLO DEGLI ZERI DI UNA FUNZIONE
 
 
 
+*** VANTAGGI:
+1) si può usare quando non si conosce la derivata di f(x) o quando f(x) è nota per punti;
+2) ad ogni passo richiede una sola valutazione di funzione, quindi il costo computazionale per iterata è veramente molto basso.
+
+*** SVANTAGGI:
+1) servono 2 approssimazioni iniziali x0 e x1;
+2) la scelta di x0 e x1 deve essere "accurata".
+
+
+                 - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- -
+
+
+*** EFFICIENZA COMPUTAZIONALE DEGLI ALGORITMI ***
+
+
+Per valutare l'efficienza di un metodo iterativo bisogna tener conto sia dell'*ordine di convergenza* che del *costo computazionale*, cioè dalla quantità di calcoli richiesta ad 
+ogni passo.
+
+	efficienza_computazionale: E = p^(1/r)        dove p: ordine di convergenza del metodo
+						           r: numero di valutazioni funzionali (calcolo di funzioni o derivate) richieste ad ogni passo
+							   
+- metodo di bisezione: E = 1 (ad ogni passo si richiede una sola valutazione funzionale f(xk)) e quindi r = 1);
+- metodo di Newton: E = 2^(1/2) (ad ogni passo si richiedono due valutazioni funzionali f(xk) e f'(xk) e quindi r = 2);
+- metodo delle corde: E = ??
+- metodo delle secanti: E = { 1 < p < 2 se f'(x) != 0     --> convergenza superlineare 
+			    { (1 + sqrt(5)) / 2 se f''(x) != 0 
+
+(ad ogni passo si richiede una sola valutazione funzionale f(xk) e quindi r = 1);
+
+
+
+*** svantaggi metodo corde:
+1) la convergenza del metodo è molto legata al tipo di funzione e alla scelta del punto di partenza : se quest'ultimo non è abbastanza vicino alla radice o la funzione non è 
+abbastanza regolare, il metodo può convergere molto lentamente.
+
+*** vantaggi metodo corde:
+1) il metodo presenta un basso costo computazionale per iterazione (si valuta solo una volta f'(x) e una sola volta per iterazione f(x)), ma si può dimostrare che l'ordine di 
+convergenza è solo lineare.
+
+
+
 	
 
  
