@@ -1,4 +1,6 @@
 import net.objecthunter.exp4j.*;
+import net.objecthunter.exp4j.tokenizer.UnknownFunctionOrVariableException;
+
 import java.util.*;
 
 import Metodi.*;
@@ -43,8 +45,8 @@ public class Zeri {
 				   input3();
 						 
 			  try{			  
-				  zero=Bisezione.Bisezione(Fun, a, b, toll_err, numero_max_iter);
-				  System.out.println("La funzione inserita vale zero per x = " + zero);
+				   zero=Bisezione.Bisezione(Fun, a, b, toll_err, numero_max_iter);
+				   System.out.println("La funzione inserita vale zero per x = " + zero);
 				
 			  } 
 			  catch (Exception e){System.err.println("ERRORE: "+ e.getMessage());}
@@ -134,25 +136,51 @@ public class Zeri {
 	}
 	
 	public static void input1(){
-		tastiera.reset();
-	try{
+		
+	  do
+	    try{
 			System.out.println("Inserire la funzione di cui calcolare gli zeri: ");
 			fg=tastiera.nextLine();
 			System.out.println("Inserire la derivata: ");
 			dfg=tastiera.nextLine();
 	        Fun = new Function(fg,dfg);
-		} catch(InputMismatchException e ){ System.err.println("valori di input non validi ");}
-		
-	}
+	        caso_errore = false;
+			
+		} catch (UnknownFunctionOrVariableException e) {
+			
+		    System.out.println("Riprovare: ");  
+		}
+	      catch (IllegalArgumentException e) {
+			
+	    	System.out.println("Riprovare: "); 
+	}	
+	  while(caso_errore);
+	  
+	  caso_errore = true;
+   }
 	
 	public static void inputf(){
-		tastiera.reset();
-	try{	
-		System.out.println("Inserire la funzione di cui calcolare gli zeri: ");
-		fg=tastiera.nextLine();
-		Fun = new Function(fg);
-	} catch(InputMismatchException e ){ System.err.println("valori di input non validi ");}
 		
+	 do	
+	    try{
+	    	
+		    System.out.println("Inserire la funzione di cui calcolare gli zeri: ");
+		    fg=tastiera.nextLine();
+		    Fun = new Function(fg);
+		    caso_errore = false;
+		
+	  } catch (UnknownFunctionOrVariableException e) {
+		
+		   System.out.println("Riprovare: ");
+	}
+	    catch (IllegalArgumentException e) {
+			
+	    	System.out.println("Riprovare: "); 
+	}	
+	
+	while(caso_errore);
+	
+	caso_errore = true;
    }
 	
 	public static void input2(){
@@ -160,10 +188,10 @@ public class Zeri {
 		do 
 			try {
 				
-			System.out.println("inserire l'estremo sinistro \n in caso si usi il metodo delle secanti, inserire il primo punto di partenza ");
+			System.out.println(" inserire l'estremo sinistro \n in caso si usi il metodo delle secanti, inserire il primo punto di partenza ");
 			a=tastiera2.nextDouble();
 			
-			System.out.println("inserire l'estremo destro \n in caso si usi il metodo delle secanti, inserire il secondo punto di partenza ");
+			System.out.println(" inserire l'estremo destro \n in caso si usi il metodo delle secanti, inserire il secondo punto di partenza ");
 			b=tastiera2.nextDouble();
 			
 			caso_errore = false;
@@ -190,7 +218,7 @@ public class Zeri {
 			}
 			catch(InputMismatchException e ){ System.err.println("valori di input non validi, riprovare: "); tastiera2.next();}
 		
-		while (caso_errore != false);
+		while (caso_errore);
 		
 		caso_errore = true;
 	}
@@ -206,7 +234,7 @@ public class Zeri {
 			
 		  } catch(InputMismatchException e ){ System.err.println("valori di input non validi "); tastiera2.next(); }
 		
-		while (caso_errore != false);
+		while (caso_errore);
 
 		caso_errore = true;
 	}
@@ -222,7 +250,7 @@ public class Zeri {
 			
 		  } catch(InputMismatchException e ){System.err.println("valore in input non valido "); tastiera2.next(); }
 		
-		while (caso_errore != false);
+		while (caso_errore);
 
 		caso_errore = true;
 	}
