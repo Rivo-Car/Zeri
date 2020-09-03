@@ -84,7 +84,7 @@ public class Zeri {
 		      try{
 				 
 		    	 zero=Newton2.Newton(Fun,a,mult,toll_err,numero_max_iter);
-				 System.out.println("la funzione inserita vale zero per x = " + zero);
+				 System.out.println("La funzione inserita vale zero per x = " + zero);
 			 }
 		      
 		      catch (Exception e){
@@ -97,7 +97,7 @@ public class Zeri {
 			   } 
 
 
-			else if(metodo.equals("secanti")||metodo.equals("SECANT")||metodo.equals("Secanti")){
+			else if(metodo.equals("secanti")||metodo.equals("SECANTI")||metodo.equals("Secanti")){
 			 do{
 				
 				   inputf();
@@ -106,7 +106,7 @@ public class Zeri {
 				
 			   try{
 				zero = Secanti.Secanti(Fun,a,b,toll_err,numero_max_iter);
-				System.out.println("la funzione inserita vale zero per x = " + zero);
+				System.out.println("La funzione inserita vale zero per x = " + zero);
 			   } 
 			   
 			   catch (Exception e){
@@ -121,11 +121,11 @@ public class Zeri {
 
 
 			else if(metodo.equals("Chiudi")||metodo.equals("chiudi")||metodo.equals("CHIUDI")){
-				System.out.println("\nGrazie mille!\nBuona giornata\n\n");
+				System.out.println("\nGrazie mille!\nBuona giornata.\n\n");
 				acceso = false;
 				}
 			else {
-				System.out.println("\n Attenzione: il metodo selezionato non corrisponde a quelli disponibili, riprovare: ");
+				System.out.println("\n Attenzione: il metodo selezionato non corrisponde a nessuno di quelli disponibili, riprovare: ");
 				}
 
     }
@@ -139,7 +139,7 @@ public class Zeri {
 		
 	  do
 	    try{
-			System.out.println("Inserire la funzione di cui calcolare gli zeri: ");
+			System.out.println("Inserire la funzione di cui si vogliono calcolare gli zeri: ");
 			fg=tastiera.nextLine();
 			System.out.println("Inserire la derivata: ");
 			dfg=tastiera.nextLine();
@@ -164,7 +164,7 @@ public class Zeri {
 	 do	
 	    try{
 	    	
-		    System.out.println("Inserire la funzione di cui calcolare gli zeri: ");
+		    System.out.println("Inserire la funzione di cui si vogliono calcolare gli zeri: ");
 		    fg=tastiera.nextLine();
 		    Fun = new Function(fg);
 		    caso_errore = false;
@@ -197,7 +197,7 @@ public class Zeri {
 			caso_errore = false;
 			
 		    }
-			catch(InputMismatchException e ){ System.err.println("valori di input non validi "); tastiera2.next();}
+			catch(InputMismatchException e ){ System.err.println("Valori di input non validi, riprovare: "); tastiera2.next();}
 		
         while (caso_errore != false);
 		
@@ -208,15 +208,15 @@ public class Zeri {
 
 		do 
 			try {
-			System.out.println("inserire la tolleranza desiderata ");
+			System.out.println("Inserire la tolleranza desiderata: ");
 			toll_err=tastiera2.nextDouble();
 			
-			System.out.println("inserire il numero massimo di iterazioni ");
+			System.out.println("Inserire il numero massimo di iterazioni: ");
 			numero_max_iter=tastiera2.nextInt();
 			
 			caso_errore = false;
 			}
-			catch(InputMismatchException e ){ System.err.println("valori di input non validi, riprovare: "); tastiera2.next();}
+			catch(InputMismatchException e ){ System.err.println("Valori di input non validi, riprovare: "); tastiera2.next();}
 		
 		while (caso_errore);
 		
@@ -227,12 +227,12 @@ public class Zeri {
 		do
 	    	try{
 	    		
-			System.out.println("Inserire il nodo di partenza ");
+			System.out.println("Inserire il nodo di partenza: ");
 			a=tastiera2.nextDouble();
 			
 			caso_errore = false;
 			
-		  } catch(InputMismatchException e ){ System.err.println("valori di input non validi "); tastiera2.next(); }
+		  } catch(InputMismatchException e ){ System.err.println("Valori di input non validi, riprovare: "); tastiera2.next(); }
 		
 		while (caso_errore);
 
@@ -243,12 +243,12 @@ public class Zeri {
 		do
 	    	try{
 	    		
-			System.out.println("inserire la molteplicità degli zeri da trovare ");
+			System.out.println("Inserire la molteplicità degli zeri da trovare: ");
 			mult=tastiera2.nextInt();
 			
 			caso_errore = false;
 			
-		  } catch(InputMismatchException e ){System.err.println("valore in input non valido "); tastiera2.next(); }
+		  } catch(InputMismatchException e ){System.err.println("Valore in input non valido "); tastiera2.next(); }
 		
 		while (caso_errore);
 
@@ -257,7 +257,7 @@ public class Zeri {
 	
 	public static boolean ripassafunzione() {
 		
-		System.out.println("Se vuoi passare un altra funzione, scrivi Yes o yes, altrimenti scrivi qualcos'altro o premi Enter");
+		System.out.println("Se vuoi procedere con il metodo appena utilizzato e con l'inserimento quindi di un'altra funzione, scrivi Yes o yes, altrimenti scrivi qualcos'altro o premi Enter");
 		
 		String risposta = tastiera3.nextLine();
 		 
