@@ -3,7 +3,7 @@ import net.objecthunter.exp4j.tokenizer.UnknownFunctionOrVariableException;
 import java.util.*;
 
 import Metodi.*;
-
+import ac.essex.graphing.swing.GraphApplication;
 
 
 /**
@@ -56,12 +56,24 @@ public class Zeri {
 				+ "- Newton;\n "
 				+ "- Secanti;\n "
 				+ "- Corde;\n\n "
+				+ "- oppure scrivi D o d se vuoi disegnare il grafico\n\n"
 				+ "- Chiudi.\n");
 		
 		metodo=tastiera.nextLine();
 		zero= Double.NaN;
 		
-	
+	        if (metodo.equals("D")||metodo.equals("d")){
+        	 do {    	       
+        	    try {
+        	       inputf();
+        	       new GraphApplication(Grapher.getGraph(fg));
+        	    }
+        	    catch (Exception e){System.err.println("ERRORE: "+ e.getMessage()); throw e;}
+        	 }
+        	 
+        	 while(ripassafunzione()); 
+        }
+		
 		// Applicazione del metodo di bisezione. 
 		
 		if(metodo.equals("bisezione")||metodo.equals("Bisezione")||metodo.equals("BISEZIONE")){
