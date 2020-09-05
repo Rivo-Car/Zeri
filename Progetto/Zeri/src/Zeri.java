@@ -132,7 +132,7 @@ public class Zeri {
 			 do{
 				
 				   inputf();
-				   input2();
+				   inputs();
 				   input3();
 				
 			   try{
@@ -234,15 +234,15 @@ public class Zeri {
 	* Metodo per ricevere in input gli estremi dell'intervallo di ricerca.
 	*/
 	
-	public static void input2(){
+	public static void inputs(){
 	
 		do 
 			try {
 				
-			System.out.println(" Inserire l'estremo sinistro: \n in caso si usi il metodo delle secanti, inserire il primo punto di partenza ");
+			System.out.println(" Inserire il primo nodo di partenza: ");
 			a=tastiera2.nextDouble();
 			
-			System.out.println(" Inserire l'estremo destro: \n in caso si usi il metodo delle secanti, inserire il secondo punto di partenza ");
+			System.out.println(" Inserire il secondo nodo di partenza: ");
 			b=tastiera2.nextDouble();
 			
 			caso_errore = false;
@@ -255,6 +255,31 @@ public class Zeri {
 		caso_errore = true;
 	}
 	
+	/**
+	* Metodo per ricevere in input gli estremi dell'intervallo di ricerca.
+	*/
+	
+	
+	public static void input2(){
+	
+		do 
+			try {
+				
+			System.out.println(" Inserire l'estremo sinistro: ");
+			a=tastiera2.nextDouble();
+			
+			System.out.println(" Inserire l'estremo destro: ");
+			b=tastiera2.nextDouble();
+			
+			caso_errore = false;
+			
+		    }
+			catch(InputMismatchException e ){ System.err.println("Valori di input non validi: "); tastiera2.next();}
+		
+        while (caso_errore != false);
+		
+		caso_errore = true;
+	}	
 	/**
 	* Metodo per ricevere in input la tolleranza desiderata e il massimo numero di iterazioni consentito.
 	*/
