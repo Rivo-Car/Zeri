@@ -1,0 +1,229 @@
+\documentclass[a4paper,12pt,]{article}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage[top=4cm, bottom=4cm, left=4cm, right=4cm, headsep=4cm, footskip=4cm]{geometry}
+ 
+
+\begin{document}
+\title {Relazione progetto di programmazione: calcolo degli zeri di una funzione }
+\date{}
+\maketitle
+\emph{ Il progetto è stato realizzato da\dots}
+\begin {center}
+\emph {Altobel Giulia , Carapucci Rivo , Corso Nicole e Gianello Alessio} 
+\end{center}
+\section {Introduzione}
+Il nostro progetto tratta la risoluzione dell'equazione:
+\begin{equation}  f(x)=0  \end{equation} con x$\in$ R.
+\\
+Abbiamo implementato quattro metodi diversi per il calcolo degli zeri dell'equazione:
+\begin{center}
+\title Metodo di bisezione;
+\end{center}
+\begin{center}
+\title Metodo di Newton;
+\end{center}
+\begin{center}
+\title Metodo delle corde;
+\end{center}
+\begin{center}
+\title Metodo delle secanti.
+\end{center}
+L'iterazione con l'utente risulterà essere fondamentale per il funzionamento del programma.
+Esso chiederà all'utente di:
+\begin{enumerate}
+\item Scegliere il metodo da usare per la ricerca;
+\item Inserire:
+	\begin{itemize}
+	\item Una funzione iniziale a scelta;
+	\item La derivata quando è necessario;
+	\item Gli estremi dell'intervallo di ricerca;
+	\item Eventuale/i nodo/i di partenza;
+	\item La tolleranza desiderata;
+	\item Massimo numero di iterazioni.
+	\end{itemize}
+\end{enumerate}
+Una volta acquisiti gli input richiesti, il programma restituirà lo zero della funzione o una sua approssimazione o
+in caso contrario un messaggio di errore in relazione alla tipologia di problema incontrato.
+In seguito il programma  permetterà all'utente di procedere con l'inserimento di un'altra funzione da risolvere con lo stesso metodo della precedente (usando la parola chiave \emph {Yes o yes}) oppure di cambiare il metodo di risoluzione (usando la frase  \emph {cambia metodo}).
+Infine, per uscire dal programma, sarà sufficiente digitare la parola chiave \emph{chiudi}.
+Affinché l'intervallo di ricerca sia accettato dal programma, è necessario che sia valido il seguente teorema:
+
+\newtheorem{Teorema}{Teorame}
+\begin{Teorema}[di Bolzano]
+Siano a e b due numeri reali tali che:
+\begin{itemize}
+\item  f(a)f(b)<0;
+\item  f sia continua su [a,b]
+\end{itemize}	
+allora esiste almeno un $\bar{x}$ $\in$  (a, b) tale che f($\bar{x}$)=0.
+\end{Teorema}
+Nel caso in cui esso non sia valido, il programma restituirà un messaggio di errore e non potrà essere utilizzato nessun metodo.
+Verrà chiesto quindi all'utente di inserire una nuova funzione o un nuovo intervallo.
+
+\section{Metodo di Bisezione}
+\subsection{Procedimento:}
+Si procede dividendo l'intervallo in due parti uguali e calcolando il valore della funzione nel punto medio di ascissa   $m = \frac{(a+b)}{2}$.
+\\
+Se risulta  $f(m) =f (\frac{(a+b)}{2}) = 0$   allora m è la radice cercata; 
+\\
+altrimenti tra i due intervalli [a, m) e (m, b] si sceglie quello ai cui estremi la funzione  assume  valori di segno opposto. 
+Si ripete per questo  nuovo intervallo la procedura di dimezzamento.
+Così continuando si ottiene una successione di intervalli [$a_1$, $b_1$], [$a_2$, $b_2$], \dots, [$a_n$, $b_n$] incapsulati,
+cioè ognuno incluso nel precedente. 
+\\
+Questi intervalli hanno come ampiezze:
+\begin{equation} b_n- a_n=\frac{(b-a)}{2^n}  \end {equation}per n =1,2\dots
+\\
+I valori $a_i$ sono valori approssimati per difetto della radice, i valori di $b_i$ sono invece i valori della radice approssimati per eccesso. 
+Gli $a_n$ formano una successione crescente limitata ed i $b_n$ formano una successione decrescente limitata.
+Le due successioni ammettono lo stesso limite che è la radice dell'equazione esaminata.
+\subsection{Criterio di arresto ed errore:}
+L'algoritmo viene arrestato quando f(m) è abbastanza vicino a 0 e/o si raggiunge il numero massimo di iterazioni consentite.
+Dunque come stima della soluzione $\alpha$ alla fine avremo un certo m. 
+\\
+\subsection{Analisi:}
+\begin{center}
+\title \large\textit{Costo computazionale:}
+\end{center}
+Per quanto riguarda il costo di questo algoritmo in termini di operazioni, considerando il fatto che viene eseguita una sola valutazione di funzione ad ogni iterazione, si può affermare che ha un costo di \emph {andamento grossomodo logaritmico} all’allargarsi dell’intervallo di confidenza.\\
+La velocità di convergenza del metodo di bisezione cresce linearmente, anche se solo localmente (cioè non vale per ogni intervallo).\\
+Il costo in termini di memoria è anch’esso molto contenuto, si utilizzano infatto soltanto poche variabili.
+\begin{center}
+\title \large\textit{Vantaggi:}
+\end{center}
+\begin{itemize}
+\item Vale la seguente relazione:
+\begin{equation}\lim_{x\to\infty}|e_n| = 0 \end{equation}
+quindi la convergenza del metodo è globale (converge sempre); è quindi un metodo molto robusto.
+\item  Ha il notevole pregio di essere stabile in ogni occasione e quindi di garantire sempre la buona riuscita dell'operazione.
+\item Dal punto di vista del costo computazionale, poichè ad ogni iterazione si esegue una sola valutazione di funzione, il costo computazionale risulta essere basso. 
+\end{itemize}
+\begin{center}
+\title \large\textit{Svantaggi:}
+\end{center}
+\begin {itemize}
+\item L'efficienza del metodo di bisezione è scarsa e sono richieste ipotesi particolarmente restrittive;
+\item Se richiediamo \begin {equation}|e_n| \le tolleranza  \end {equation}otteniamo la seguente condizione per n:
+\begin{equation}	n \ge \log_2 (\frac{b-a} {toller}) - 1. \end{equation}
+Essendo $ \log_2 10 \approx 3.32$
+servono in media più di tre bisezioni per migliorare di una cifra significativa l'accuratezza della radice, quindi la convergenza è  lenta;
+\item Inoltre la riduzione dell'errore a ogni passaggio non è monotona, cioè non è detto che:  \begin {equation}|e_{n+1}| < |e_n | \end{equation}per ogni n = 1,2\dots
+\item Il metodo funziona solo se la funzione ammette un solo zero e non può calcolare zeri complessi.
+\end{itemize}
+\section {Metodo di Newton o delle tangenti}		
+\subsection{Procedimento:}
+Il metodo consiste nel sostituire alla curva  y=f(x)  la tangente alla curva stessa, partendo da un qualsiasi punto: considerando l’equazione del fascio di rette:
+\begin{equation} y - f(x_0)=m(x-x_0)\end{equation} posto y=0 e m=f'($x_0$), $x_1$ sarà:\begin{equation} x_1=x_0-\frac {f(x_0)}{f'(x0)}) \end{equation}
+Generalizzando all’iterazione   k: $x_{k-1}$ =$x_k$ - (f($x_k$))/(f'($x_k$)), che è la relazione di ricorrenza del metodo (che permette di determinare successive 	approssimazioni della radice dell'equazione y= f(x) =0).
+\subsection{Criterio di arresto ed errore:}
+L'algoritmo viene arrestato quando viene raggiunto il massimo numero di iterazioni e/o quando l'errore risulta minore della tolleranza prestabilita.
+L'errore è dato dalla seguente relazione:
+\begin{equation} e_n=|x_1-x| \end{equation}
+Dove con x si intende l'itererazione precedente e con $x_1$ si intende l'iterazione corrente.
+\subsection{Analisi:}
+\begin{center}
+\title \large\textit{Costo computazionale:}
+\end{center}
+Il metodo di Newton ha un costo leggermente più alto del precedente: richiede infatti due valutazioni di funzione ad ogni iterazione. 
+In questo caso il costo massimo della determinazione dello zero non è determinabile a priori, e dipende dalla scelta del numero massimo di iterazioni  effettuata dall’utente.
+Il costo in termini di memoria, come nel caso del metodo di bisezione è anch’esso molto contenuto e si utilizzano soltanto poche variabili.
+\begin{center}
+\title \large\textit{Vantaggi:}
+\end{center}
+Con le ipotesi poste, si dimostra che la successione delle $x_n$ converge alla radice piuttosto rapidamente.
+La convergenza è quadratica, cioè il numero di cifre significative approssimativamente raddoppia ad ogni iterazione.
+\begin{center}
+\title \large\textit{Svantaggi:}
+\end{center}
+\begin{itemize}
+\item Il metodo è applicabile solo a funzioni derivabili con derivata prima diversa da zero nei punti della successione;
+\\
+\item La convergenza non è garantita, in particolare quando f'(x) varia notevolmente in prossimità dello zero. 
+Inoltre, il metodo assume che f'(x) sia disponibile direttamente per un dato x. Nei casi in cui questo non si verifichi e risultasse necessario calcolare la derivata attraverso una differenza finita, è consigliabile usare il metodo delle secanti;
+\\
+\item Il numero di iterazioni dipende principalmente dalla posizione del punto iniziale rispetto allo zero. 
+In base alla funzione analizzata e al valore di $x_0$ assunto come prima iterazione il metodo può convergere o meno. Il metodo risulta meno solido rispetto al metodo di bisezione.
+\end{itemize}
+\section{Metodo delle corde}
+\subsection{Procedimento:}
+Il metodo consiste nel costruire una successione di punti con il seguente criterio:	
+assegnato un punto iniziale $x_0$, per ogni n $\ge$ 0, il punto $x_{n+1}$ sia lo zero della retta passante per il punto ($x_n$, f($x_n$)) e di coefficiente angolare $m = \frac {f(a)- f(x_n)}{a-x_n}$
+ovvero quello della retta passante per i punti ($x_n$,f($x_n$)) e (a,f(a)).
+
+Iterando il procedimento del calcolo dell'intersezione delle varie rette con l'asse delle ascisse, si ottiene la relazione di ricorrenza:
+\begin{equation}	x_{n+1} =  a - f(a)\frac{(x_n - a)} {f(x_n) - f(a)} \end{equation}
+
+\subsection{Criterio di arresto ed errore:}
+L'algoritmo viene arrestato quando viene raggiunto il massimo numero di iterazioni e/o quando l'errore risulta minore della tolleranza prestabilita.
+L'errore è dato dalla seguente relazione:
+\begin{equation} e_n=|x_1-x| \end{equation}
+Dove con x  si intende l'itererazione corrente e con  $x_1$  si intende l'iterazione successiva.
+\subsection{Analisi:}
+\begin{center}
+\title \large\textit{Costo computazionale:}
+\end{center}
+Questo metodo ad ogni ciclo iterativo svolge soltanto una valutazione di funzione, il costo per iterata è quindi molto basso.\\
+Bisogna inoltre notare come la convergenza del metodo sia molto legata al tipo di funzione e alla scelta del punto di partenza;\\
+se questo non è abbastanza vicino alla radice oppure la funzione non è abbastanza regolare, il metodo può convergere molto lentamente.
+\begin{center}
+\title \large\textit{Vantaggi:}
+\end{center}
+Il metodo presenta un basso costo computazionale per iterazione (si valuta solo una volta f'(x) e una sola volta per iterazione f(x)), ma si può dimostrare che l'ordine di convergenza è solo lineare.
+\begin{center}
+\title \large\textit{Svantaggi:}
+\end{center}
+\begin{itemize}
+\item Il metodo potrebbe convergere molto lentamente (vedi \emph {costo computazionale 4.3})
+\item Il metodo delle corde converge linearmente se, detta $\alpha$  la soluzione corretta, vale: 
+\begin{equation}	0 < \frac {f'(\alpha) }{m }< 2 \end{equation}
+In altri termini, m e f'($\alpha$) devono avere lo stesso segno e l'intervallo [a,b] deve soddisfare la condizione:
+\begin{equation}	b-a < 2 \frac {f(b) - f(a)}{ f'(\alpha)}\end{equation}
+Negli altri casi il metodo potrebbe non convergere affatto.
+\end{itemize}
+\section{Metodo delle secanti}
+\subsection{Procedimento}
+Il metodo consiste nel costruire una successione di punti con il seguente criterio: assegnati due punti iniziali x0 e x1, per ogni n $\ge$ 1 , il punto 	$x_{n+1}$ sia lo zero della retta passante per i punti
+ $(x_{n-1},f(x_{n-1})), (x_n, f(x_n))$. Si ottiene:
+\begin{equation} x_{n+1} = x_n - \frac {(x_n - x_{n-1})} { (f(x_n) - f(x_n-1))}   f(x_n) \end{equation}
+Rispetto al metodo delle corde, quello delle secanti richiede un punto iniziale in più e ad ogni passo il calcolo del rapporto che compare nella formula. 
+\subsection{Criterio di arresto ed errore:}
+L'algoritmo viene arrestato quando viene raggiunto il massimo numero di iterazioni e/o quando l'errore risulta minore della tolleranza prestabilita.
+L'errore è dato dalla seguente relazione:
+\begin{equation} e_n=|x_1-x_0| \end{equation}
+Dove con $x_0$ si intende l'itererazione corrente e con  $x_1$  si intende l'iterazione successiva.
+\subsection{Analisi:}
+\begin{center}
+\title \large\textit{Costo computazionale:}
+\end{center}
+Questo metodo ad ogni ciclo iterativo svolge soltanto una valutazione di funzione, il costo per iterata è quindi veramente molto basso.
+Inoltre la convergenza è locale, cioè dipende dalla scelta dei punti iniziali $x_0$ e $x_1$; il guadagno è però una maggiore velocità di convergenza,\\
+che risulta superlineare. 
+\begin{center}
+\title \large\textit{Vantaggi:}
+\end{center}
+\begin {itemize}
+\item Si può usare quando non si conosce la derivata di f(x) o quando f(x) è nota per punti;
+\item Ad ogni passo richiede una sola valutazione di funzione, quindi il costo computazionale per iterata è veramente molto basso.
+\end{itemize}
+\begin{center}
+\title \large\textit{Svantaggi:}
+\end{center}
+\begin{itemize}
+\item Servono 2 approssimazioni iniziali $x_0$ e $x_1$; 
+\item La scelta di $x_0$ e $x_1$ deve essere "accurata".
+\end{itemize}
+\section {Bibliografia}
+Di seguito vengono citate le fonti utilizzate nella nostra relazione:
+	\begin{itemize}
+	\item Dispensa-ricercaZeri (fornita dal professore);
+	\item Le seguenti pagine di Wikipedia:
+		\begin{itemize}
+		\item Metodo della bisezione;
+		\item Metodo delle tangenti;
+		\item Metodo delle corde;
+		\item Metodo delle secanti.
+		\end{itemize}
+	\item Appunti dal corso di Calcolo numerico I.
+	\end{itemize}
+\end{document}
