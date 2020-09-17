@@ -161,11 +161,9 @@ In base alla funzione analizzata e al valore di $x_0$ assunto come prima iterazi
 \section{Metodo delle corde}
 \subsection{Procedimento:}
 Il metodo consiste nel costruire una successione di punti con il seguente criterio:	
-assegnato un punto iniziale $x_0$, per ogni n $\ge$ 0, il punto $x_{n+1}$ sia lo zero della retta passante per il punto ($x_n$, f($x_n$)) e di coefficiente angolare $m = \frac {f(a)- f(x_n)}{a-x_n}$
-ovvero quello della retta passante per i punti ($x_n$,f($x_n$)) e (a,f(a)).
-
+assegnato un punto iniziale $x_0$, per ogni n $\ge$ 0, il punto $x_{n+1}$ sia lo zero della retta passante per il punto ($x_n$, f($x_n$)) e di coefficiente angolare $m = f'(x_0)$.
 Iterando il procedimento del calcolo dell'intersezione delle varie rette con l'asse delle ascisse, si ottiene la relazione di ricorrenza:
-\begin{equation}	x_{n+1} =  a - f(a)\frac{(x_n - a)} {f(x_n) - f(a)} \end{equation}
+\begin{equation}	x_{n+1} =  x_n - \frac {f(x_n)}{m} \end{equation}
 
 \subsection{Criterio di arresto ed errore:}
 L'algoritmo viene arrestato quando viene raggiunto il massimo numero di iterazioni e/o quando l'errore risulta minore della tolleranza prestabilita.
