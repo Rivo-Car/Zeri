@@ -23,15 +23,33 @@ public class Secanti {
 		
 		double fx0, fx1, m, x2;  
 		double zero = 0;
-		int n = 0;  //contatore del numero di iterazioni.
+		int n = 1;  //contatore del numero di iterazioni.
 		double error = 1;  //valore iniziale dell'errore.
 		
 		double x = x0; //imposta il valore x0 come punto corrente.
 		
+		fx1 = Fun.Evaluate(x1);
+		fx0 = Fun.Evaluate(x0);
+		
+		if (fx0*fx1 > 0){
+			System.err.println("Secondo il teorema di Bolzano, la funzione, nello specifico intervallo dato in input,"
+			+ " non possiede zeri oppure ne possiede alcuni. Si consiglia di inserire altri punti di partenza.");
+		}
+		
+		else if (fx0 == 0) {
+			return x0;
+		}
+		
+		else if (fx1 == 0){
+			return x1;
+		}
+		
+		
 		while ((n <= numero_max_iter) && (error >= toll_err)){
-			
+				
 			fx1 = Fun.Evaluate(x1);
 			fx0 = Fun.Evaluate(x0);
+				
 			m = (fx1-fx0)/(x1-x0);
 			
 			if (fx1 == 0){  
@@ -43,11 +61,11 @@ public class Secanti {
 			x1 = x2;
 			error = Math.abs(x1-x0);
 			n++;
-			
+			zero = x1;
 			
 		}
-		zero = x1;
-		return zero;	
-			
+		System.out.println("Il numero di iterazioni eseguite e': " + n);
+		return zero;
+		
 	}
 }

@@ -43,8 +43,9 @@ public static double Corde(Function Fun, double x0, double toll_err, int numero_
 			if (Math.abs(m) == 0){
 			System.err.println("Attenzione! Poichè non è possibile dividere per zero, l'iterazione successiva non può essere calcolata.");
 			break;
+			}
 		}
-		}
+		System.out.println("Il numero di iterazioni eseguite e': " + n);
 		return zero;	
 		
 	}

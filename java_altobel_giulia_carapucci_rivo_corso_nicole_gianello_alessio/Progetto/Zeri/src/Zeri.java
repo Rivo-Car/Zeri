@@ -30,7 +30,7 @@ import ac.essex.graphing.swing.GraphApplication;
 * </ol>
 *
 * @author Altobel Giulia, Carapucci Rivo, Corso Nicole, Gianello Alessio.
-* @version 3.0
+* @version 15.0
 */
 
 
